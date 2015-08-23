@@ -7,3 +7,9 @@ matrix:
 
 install:
   - composer install
+
+before_script:
+  - curl http://get.sensiolabs.org/php-cs-fixer.phar -o php-cs-fixer
+
+script:
+  - php php-cs-fixer -v fix . --dry-run
