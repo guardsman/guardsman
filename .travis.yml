@@ -1,0 +1,15 @@
+language: php
+
+matrix:
+    include:
+        - php: 5.6
+    fast_finish: true
+
+install:
+  - composer install
+
+before_script:
+  - curl http://get.sensiolabs.org/php-cs-fixer.phar -o php-cs-fixer
+
+script:
+  - php php-cs-fixer -v fix . --dry-run
