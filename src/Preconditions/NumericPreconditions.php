@@ -110,4 +110,23 @@ trait NumericPreconditions
 
         return $this;
     }
+
+    /**
+     * @throws ArgumentNotNumeric if the limit is not numeric.
+     * @throws ArgumentNotNumeric if the subject is not numeric.
+     * @throws ValueTooBig        if the subject is greater than $limit.
+     *
+     * @return $this
+     */
+    public function isLessThanOrEqualTo($limit)
+    {
+        \Guardsman\check($limit)->isNumeric();
+        \Guardsman\check($this->getSubject())->isNumeric();
+
+        if ($this->getSubject() > $limit) {
+            throw new ValueTooBig('Subject must be less than or equal to the limit');
+        }
+
+        return $this;
+    }
 }

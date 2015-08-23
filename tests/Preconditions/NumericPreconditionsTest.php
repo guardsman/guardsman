@@ -212,4 +212,41 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isLessThan($limit);
     }
+
+    /**
+     * @dataProvider gtProvider
+     */
+    public function testIsLessThanOrEqualTo($subject, $limit)
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check($subject)->isLessThanOrEqualTo($limit)
+        );
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @dataProvider nonNumericProvider
+     */
+    public function testIsLessThanOrEqualToGuardsAgainstNonNumericSubjects($subject)
+    {
+        \Guardsman\check($subject)->isLessThanOrEqualTo(7);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @dataProvider nonNumericProvider
+     */
+    public function testIsLessThanOrEqualToGuardsAgainstNonNumericLimits($limit)
+    {
+        \Guardsman\check(7)->isLessThanOrEqualTo($limit);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ValueTooBig
+     */
+    public function testIsLessThanOrEqualToThrowsValueTooBigException()
+    {
+        \Guardsman\check(7)->isLessThanOrEqualTo(1);
+    }
 }
