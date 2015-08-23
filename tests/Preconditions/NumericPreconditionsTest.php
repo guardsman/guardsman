@@ -67,4 +67,26 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isInteger();
     }
+
+    public function testIsFloat()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check(1.23)->isFloat()
+        );
+    }
+
+    public function nonFloatProvider()
+    {
+        return array_merge($this->nonNumericProvider(), [[0], [123]]);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ArgumentNotAFloat
+     * @dataProvider nonFloatProvider
+     */
+    public function testIsFloatThrowsArgumentNotAFloat($subject)
+    {
+        \Guardsman\check($subject)->isFloat();
+    }
 }
