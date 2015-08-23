@@ -45,4 +45,26 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isNumeric();
     }
+
+    public function testIsInteger()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check(7)->isInteger()
+        );
+    }
+
+    public function nonIntegerProvider()
+    {
+        return array_merge($this->nonNumericProvider(), [[1.2], [7E-10]]);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ArgumentNotAnInteger
+     * @dataProvider nonIntegerProvider
+     */
+    public function testIsIntegerThrowsArgumentNotAnInteger($subject)
+    {
+        \Guardsman\check($subject)->isInteger();
+    }
 }
