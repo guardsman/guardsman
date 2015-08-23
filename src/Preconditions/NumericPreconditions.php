@@ -3,6 +3,7 @@
 use Guardsman\Exceptions\ArgumentNotAFloat;
 use Guardsman\Exceptions\ArgumentNotAnInteger;
 use Guardsman\Exceptions\ArgumentNotNumeric;
+use Guardsman\Exceptions\ValueTooSmall;
 
 trait NumericPreconditions
 {
@@ -47,6 +48,25 @@ trait NumericPreconditions
     {
         if (!is_float($this->getSubject())) {
             throw new ArgumentNotAFloat('Subject must be a float');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @throws ArgumentNotNumeric if the limit is not numeric.
+     * @throws ArgumentNotNumeric if the subject is not numeric.
+     * @throws ValueTooSmall      if the subject is less than or equal to $limit.
+     *
+     * @return $this
+     */
+    public function isGreaterThan($limit)
+    {
+        \Guardsman\check($limit)->isNumeric();
+        \Guardsman\check($this->getSubject())->isNumeric();
+
+        if ($this->getSubject() <= $limit) {
+            throw new ValueTooSmall('Subject must be greater than the limit');
         }
 
         return $this;

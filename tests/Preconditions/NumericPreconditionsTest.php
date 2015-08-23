@@ -89,4 +89,47 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isFloat();
     }
+
+    public function testIsGreaterThan()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check(7)->isGreaterThan(1)
+        );
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @dataProvider nonNumericProvider
+     */
+    public function testIsGreaterThanGuardsAgainstNonNumericSubjects($subject)
+    {
+        \Guardsman\check($subject)->isGreaterThan(7);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @dataProvider nonNumericProvider
+     */
+    public function testIsGreaterThanGuardsAgainstNonNumericLimits($limit)
+    {
+        \Guardsman\check(0)->isGreaterThan($limit);
+    }
+
+    public function gtProvider()
+    {
+        return [
+            [7, 8],
+            [7, 7],
+        ];
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ValueTooSmall
+     * @dataProvider gtProvider
+     */
+    public function testIsGreaterThanThrowsValueTooSmall($subject, $limit)
+    {
+        \Guardsman\check($subject)->isGreaterThan($limit);
+    }
 }
