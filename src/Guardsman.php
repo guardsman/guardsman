@@ -2,6 +2,8 @@
 
 class Guardsman
 {
+    use Preconditions\NumericPreconditions;
+
     /** @var mixed */
     protected $subject;
 
@@ -9,6 +11,12 @@ class Guardsman
     public function __construct($subject)
     {
         $this->subject = $subject;
+    }
+
+    /** {@inheritdoc} */
+    public function getSubject()
+    {
+        return $this->subject;
     }
 
     /**
