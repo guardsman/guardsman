@@ -13,3 +13,4 @@ before_script:
 
 script:
   - php php-cs-fixer -v fix . --dry-run
+  - phpunit
