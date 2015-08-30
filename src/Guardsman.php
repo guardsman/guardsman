@@ -3,6 +3,7 @@
 class Guardsman
 {
     use Preconditions\NumericPreconditions;
+    use Preconditions\StringPreconditions;
 
     /** @var mixed */
     protected $subject;
