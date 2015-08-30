@@ -82,4 +82,24 @@ trait StringPreconditions
 
         return $this;
     }
+
+    /**
+     * @throws ArgumentNotNumeric if the limit is not numeric.
+     * @throws ValueTooSmall      if the limit is less than or equal to zero.
+     * @throws ArgumentNotAString if the subject is not a string.
+     * @throws StringTooShort     if the subject is shorter than $limit.
+     *
+     * @return $this
+     */
+    public function isLongerThanOrEqualTo($limit)
+    {
+        \Guardsman\check($limit)->isGreaterThan(0);
+        \Guardsman\check($this->getSubject())->isString();
+
+        if (mb_strlen($this->getSubject()) < $limit) {
+            throw new StringTooShort('Subject must be longer than or equal to the limit');
+        }
+
+        return $this;
+    }
 }
