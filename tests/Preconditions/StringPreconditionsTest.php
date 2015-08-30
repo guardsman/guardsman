@@ -128,4 +128,39 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check('string')->isShorterThanOrEqualTo(5);
     }
+
+    public function testIsLongerThan()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check('string')->isLongerThan(5)
+        );
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ArgumentNotAString
+     * @dataProvider invalidStringProvider
+     */
+    public function testIsLongerThanGuardsAgainstNonStringSubjects($subject)
+    {
+        \Guardsman\check($subject)->isLongerThan(7);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ValueTooSmall
+     * @dataProvider nonPositiveLimitProvider
+     */
+    public function testIsLongerThanGuardsAgainstNonPositiveLimits($limit)
+    {
+        \Guardsman\check('string')->isLongerThan($limit);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\StringTooShort
+     * @dataProvider lteProvider
+     */
+    public function testIsLongerThanThrowsStringTooShort($subject, $limit)
+    {
+        \Guardsman\check($subject)->isLongerThan($limit);
+    }
 }

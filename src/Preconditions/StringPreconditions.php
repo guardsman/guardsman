@@ -2,6 +2,7 @@
 
 use Guardsman\Exceptions\ArgumentNotAString;
 use Guardsman\Exceptions\StringTooLong;
+use Guardsman\Exceptions\StringTooShort;
 
 trait StringPreconditions
 {
@@ -57,6 +58,26 @@ trait StringPreconditions
 
         if (mb_strlen($this->getSubject()) > $limit) {
             throw new StringTooLong('Subject must be shorter than or equal to the limit');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @throws ArgumentNotNumeric if the limit is not numeric.
+     * @throws ValueTooSmall      if the limit is less than or equal to zero.
+     * @throws ArgumentNotAString if the subject is not a string.
+     * @throws StringTooShort     if the subject is shorter or equal to $limit.
+     *
+     * @return $this
+     */
+    public function isLongerThan($limit)
+    {
+        \Guardsman\check($limit)->isGreaterThan(0);
+        \Guardsman\check($this->getSubject())->isString();
+
+        if (mb_strlen($this->getSubject()) <= $limit) {
+            throw new StringTooShort('Subject must be longer than the limit');
         }
 
         return $this;
