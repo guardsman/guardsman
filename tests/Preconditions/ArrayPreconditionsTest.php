@@ -58,4 +58,24 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isValue($array);
     }
+
+    /**
+     * @dataProvider isNotValueProvider
+     */
+    public function testIsNotValue($subject, array $array)
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check($subject)->isNotValue($array)
+        );
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ValueExists
+     * @dataProvider isValueProvider
+     */
+    public function testIsNotValueThrowsValueExistsException($subject, $array)
+    {
+        \Guardsman\check($subject)->isNotValue($array);
+    }
 }

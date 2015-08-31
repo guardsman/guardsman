@@ -1,5 +1,6 @@
 <?php namespace Guardsman\Preconditions;
 
+use Guardsman\Exceptions\ValueExists;
 use Guardsman\Exceptions\ValueNotFound;
 
 trait ArrayPreconditions
@@ -16,6 +17,20 @@ trait ArrayPreconditions
     {
         if (!in_array($this->getSubject(), $array, true)) {
             throw new ValueNotFound('Subject must be a value within the given array');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @throws ValueExists if the subject is a value within the array.
+     *
+     * @return $this
+     */
+    public function isNotValue(array $array)
+    {
+        if (in_array($this->getSubject(), $array, true)) {
+            throw new ValueExists('Subject must not be a value within the given array');
         }
 
         return $this;
