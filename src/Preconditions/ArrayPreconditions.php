@@ -1,9 +1,9 @@
 <?php namespace Guardsman\Preconditions;
 
+use Guardsman\Exceptions\KeyExists;
 use Guardsman\Exceptions\KeyNotFound;
 use Guardsman\Exceptions\ValueExists;
 use Guardsman\Exceptions\ValueNotFound;
-use UnexpectedValueException;
 
 trait ArrayPreconditions
 {
@@ -47,6 +47,20 @@ trait ArrayPreconditions
     {
         if (!array_key_exists($this->getSubject(), $array)) {
             throw new KeyNotFound('Subject must be a key of the given array.');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @throws KeyExists if the subject is a key within the array.
+     *
+     * @return $this
+     */
+    public function isNotKey(array $array)
+    {
+        if (array_key_exists($this->getSubject(), $array)) {
+            throw new KeyExists('Subject must not be a key of the given array.');
         }
 
         return $this;

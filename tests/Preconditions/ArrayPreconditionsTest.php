@@ -120,4 +120,24 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isKey($array);
     }
+
+    /**
+     * @dataProvider isNotKeyProvider
+     */
+    public function testIsNotKey($subject, array $array)
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check($subject)->isNotKey($array)
+        );
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\KeyExists
+     * @dataProvider isKeyProvider
+     */
+    public function testIsNotKeyThrowsKeyExistsException($subject, $array)
+    {
+        \Guardsman\check($subject)->isNotKey($array);
+    }
 }
