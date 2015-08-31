@@ -78,4 +78,46 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isNotValue($array);
     }
+
+    public function isKeyProvider()
+    {
+        $array = [
+            'string' => 1,
+            'one' => null,
+            1 => 'string',
+        ];
+
+        return array_map(function ($key) use ($array) {
+            return [$key, $array];
+        }, array_keys($array));
+    }
+
+    /**
+     * @dataProvider isKeyProvider
+     */
+    public function testIsKey($subject, array $array)
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check($subject)->isKey($array)
+        );
+    }
+
+    public function isNotKeyProvider()
+    {
+        return [
+            ['string', ['String' => 1]],
+            ['string', [1 => 'string']],
+            ['string', []],
+        ];
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\KeyNotFound
+     * @dataProvider isNotKeyProvider
+     */
+    public function testIsKeyThrowsKeyNotFoundException($subject, array $array)
+    {
+        \Guardsman\check($subject)->isKey($array);
+    }
 }
