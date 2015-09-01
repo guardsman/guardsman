@@ -50,4 +50,41 @@ class DateTimePreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isBefore(new \DateTime('13th July 2014'));
     }
+
+    public function lteDateTimeProvider()
+    {
+        return [
+            [new \DateTime('7th July 1984'), new \DateTime('13th July 2014')],
+            [new \DateTime('13th July 2014'), new \DateTime('13th July 2014')],
+        ];
+    }
+
+    /**
+     * @dataProvider lteDateTimeProvider
+     */
+    public function testIsBeforeOrEqualTo(\DateTimeInterface $subject, \DateTimeInterface $limit)
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check($subject)->isBeforeOrEqualTo($limit)
+        );
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\DateTimeTooLate
+     */
+    public function testIsBeforeOrEqualToThrowsDateTimeTooLateException()
+    {
+        \Guardsman\check(new \DateTime('13th July 2014'))
+            ->isBeforeOrEqualTo(new \DateTime('7th July 1984'));
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ArgumentNotADateTime
+     * @dataProvider nonDateTimeProvider
+     */
+    public function testIsBeforeOrEqualToGuardsAgainstNonDateTimeSubjects($subject)
+    {
+        \Guardsman\check($subject)->isBeforeOrEqualTo(new \DateTime('13th July 2014'));
+    }
 }
