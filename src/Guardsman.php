@@ -2,6 +2,7 @@
 
 class Guardsman
 {
+    use Preconditions\DateTimePreconditions;
     use Preconditions\NumericPreconditions;
     use Preconditions\StringPreconditions;
 
