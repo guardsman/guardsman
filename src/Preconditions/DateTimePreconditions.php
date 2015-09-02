@@ -10,6 +10,16 @@ trait DateTimePreconditions
     abstract public function getSubject();
 
     /**
+     * @throws ArgumentNotADateTime if $subject is not a DateTime.
+     */
+    private function isDateTime($subject)
+    {
+        if (!$subject instanceof \DateTimeInterface) {
+            throw new ArgumentNotADateTime('Subject must be a DateTime');
+        }
+    }
+
+    /**
      * @throws ArgumentNotADateTime if the subject is not a DateTime.
      * @throws DateTimeTooLate      if the subject is after or equal to the limit.
      *
@@ -17,9 +27,7 @@ trait DateTimePreconditions
      */
     public function isBefore(\DateTimeInterface $limit)
     {
-        if (!$this->getSubject() instanceof \DateTimeInterface) {
-            throw new ArgumentNotADateTime('Subject must be a DateTime');
-        }
+        $this->isDateTime($this->getSubject());
 
         if ($this->getSubject() >= $limit) {
             throw new DateTimeTooLate('Subject must be before the limit');
@@ -36,9 +44,7 @@ trait DateTimePreconditions
      */
     public function isBeforeOrEqualTo(\DateTimeInterface $limit)
     {
-        if (!$this->getSubject() instanceof \DateTimeInterface) {
-            throw new ArgumentNotADateTime('Subject must be a DateTime');
-        }
+        $this->isDateTime($this->getSubject());
 
         if ($this->getSubject() > $limit) {
             throw new DateTimeTooLate('Subject must be before or equal to the limit');
@@ -55,9 +61,7 @@ trait DateTimePreconditions
      */
     public function isAfter(\DateTimeInterface $limit)
     {
-        if (!$this->getSubject() instanceof \DateTimeInterface) {
-            throw new ArgumentNotADateTime('Subject must be a DateTime');
-        }
+        $this->isDateTime($this->getSubject());
 
         if ($this->getSubject() <= $limit) {
             throw new DateTimeTooEarly('Subject must be after the limit');
@@ -74,9 +78,7 @@ trait DateTimePreconditions
      */
     public function isAfterOrEqualTo(\DateTimeInterface $limit)
     {
-        if (!$this->getSubject() instanceof \DateTimeInterface) {
-            throw new ArgumentNotADateTime('Subject must be a DateTime');
-        }
+        $this->isDateTime($this->getSubject());
 
         if ($this->getSubject() < $limit) {
             throw new DateTimeTooEarly('Subject must be after or equal to the limit');
