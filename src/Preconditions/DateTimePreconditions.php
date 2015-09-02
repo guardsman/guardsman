@@ -65,4 +65,23 @@ trait DateTimePreconditions
 
         return $this;
     }
+
+    /**
+     * @throws ArgumentNotADateTime if the subject is not a DateTime.
+     * @throws DateTimeTooEarly     if the subject is before the limit.
+     *
+     * @return $this
+     */
+    public function isAfterOrEqualTo(\DateTimeInterface $limit)
+    {
+        if (!$this->getSubject() instanceof \DateTimeInterface) {
+            throw new ArgumentNotADateTime('Subject must be a DateTime');
+        }
+
+        if ($this->getSubject() < $limit) {
+            throw new DateTimeTooEarly('Subject must be after or equal to the limit');
+        }
+
+        return $this;
+    }
 }
