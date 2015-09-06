@@ -1,6 +1,6 @@
-<?php namespace Guardsman;
+<?php namespace Guardsman\Preconditions;
 
-class GuardsmanTest extends \PHPUnit_Framework_TestCase
+class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
 {
     /** @expectedException \InvalidArgumentException */
     public function testIsNotNullThrowsInvalidArgumentException()
@@ -24,9 +24,10 @@ class GuardsmanTest extends \PHPUnit_Framework_TestCase
     /** @dataProvider notNullProvider */
     public function testIsNotNull($subject)
     {
-        \Guardsman\check($subject)->isNotNull();
-
-        $this->addToAssertionCount(1);
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check($subject)->isNotNull()
+        );
     }
 
     public function emptyProvider()
@@ -59,8 +60,9 @@ class GuardsmanTest extends \PHPUnit_Framework_TestCase
     /** @dataProvider notEmptyProvider */
     public function testIsNotEmpty($subject)
     {
-        \Guardsman\check($subject)->isNotEmpty();
-
-        $this->addToAssertionCount(1);
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check($subject)->isNotEmpty()
+        );
     }
 }
