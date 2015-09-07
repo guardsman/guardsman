@@ -17,10 +17,10 @@ class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \UnexpectedValueException
+     * @expectedException \Guardsman\Exceptions\ValueIsEmpty
      * @dataProvider emptyProvider
      */
-    public function testIsNotEmptyThrowsUnexpectedValueException($subject)
+    public function testIsNotEmptyThrowsValueIsEmptyException($subject)
     {
         \Guardsman\check($subject)->isNotEmpty();
     }
