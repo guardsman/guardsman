@@ -55,7 +55,7 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws TypeNotNumeric if $limit is not numeric.
      * @throws TypeNotNumeric if the subject is not numeric.
      * @throws ValueTooSmall  if the subject is less than or equal to $limit.
      *
@@ -74,7 +74,7 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws TypeNotNumeric if $limit is not numeric.
      * @throws TypeNotNumeric if the subject is not numeric.
      * @throws ValueTooSmall  if the subject is less than $limit.
      *
@@ -93,7 +93,7 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws TypeNotNumeric if $limit is not numeric.
      * @throws TypeNotNumeric if the subject is not numeric.
      * @throws ValueTooBig    if the subject is greater than or equal to $limit.
      *
@@ -112,7 +112,7 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws TypeNotNumeric if $limit is not numeric.
      * @throws TypeNotNumeric if the subject is not numeric.
      * @throws ValueTooBig    if the subject is greater than $limit.
      *

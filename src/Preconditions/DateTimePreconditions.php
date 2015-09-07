@@ -10,7 +10,7 @@ trait DateTimePreconditions
     abstract public function getSubject();
 
     /**
-     * @throws TypeNotDateTime if $subject is not a DateTime.
+     * @throws TypeNotDateTime if the subject is not a DateTime.
      */
     private function isDateTime($subject)
     {
@@ -21,7 +21,7 @@ trait DateTimePreconditions
 
     /**
      * @throws TypeNotDateTime if the subject is not a DateTime.
-     * @throws DateTimeTooLate if the subject is after or equal to the limit.
+     * @throws DateTimeTooLate if the subject is after or equal to $limit.
      *
      * @return $this
      */
@@ -38,7 +38,7 @@ trait DateTimePreconditions
 
     /**
      * @throws TypeNotDateTime if the subject is not a DateTime.
-     * @throws DateTimeTooLate if the subject is after the limit.
+     * @throws DateTimeTooLate if the subject is after $limit.
      *
      * @return $this
      */
@@ -55,7 +55,7 @@ trait DateTimePreconditions
 
     /**
      * @throws TypeNotDateTime  if the subject is not a DateTime.
-     * @throws DateTimeTooEarly if the subject is before or equal to the limit.
+     * @throws DateTimeTooEarly if the subject is before or equal to $limit.
      *
      * @return $this
      */
@@ -72,7 +72,7 @@ trait DateTimePreconditions
 
     /**
      * @throws TypeNotDateTime  if the subject is not a DateTime.
-     * @throws DateTimeTooEarly if the subject is before the limit.
+     * @throws DateTimeTooEarly if the subject is before $limit.
      *
      * @return $this
      */

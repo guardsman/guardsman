@@ -9,8 +9,8 @@ trait EmptyPreconditions
     abstract public function getSubject();
 
     /**
-     * @throws EmptyString if $subject is an empty string when trimmed.
-     * @throws EmptyValue  if $subject is empty.
+     * @throws EmptyString if the subject is an empty string when trimmed.
+     * @throws EmptyValue  if the subject is empty.
      *
      * @return $this
      */
