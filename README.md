@@ -1,8 +1,14 @@
 # Guardsman :guardsman:
 
+![travis](https://travis-ci.org/guardsman/guardsman.svg)
+
 A guard clause assertion library to enforce parameter preconditions.
 
-![travis](https://travis-ci.org/guardsman/guardsman.svg)
+This provides a framework free, simple, chainable api for method parameter validation that throws
+exceptions on failure.
+
+It is not intended as a validation library for end user input. If this is your use case then you should
+try one of these [validation libraries](https://packagist.org/search/?q=validation) instead.
 
 ## Installation
 
