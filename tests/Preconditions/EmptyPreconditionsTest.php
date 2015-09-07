@@ -2,13 +2,7 @@
 
 class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
 {
-    /** @expectedException \InvalidArgumentException */
-    public function testIsNotNullThrowsInvalidArgumentException()
-    {
-        \Guardsman\check(null)->isNotNull();
-    }
-
-    public function notNullProvider()
+    public function emptyProvider()
     {
         return [
             [''],
@@ -18,21 +12,8 @@ class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
             [0.0],
             [false],
             [[]],
+            [null],
         ];
-    }
-
-    /** @dataProvider notNullProvider */
-    public function testIsNotNull($subject)
-    {
-        $this->assertInstanceOf(
-            \Guardsman\Guardsman::class,
-            \Guardsman\check($subject)->isNotNull()
-        );
-    }
-
-    public function emptyProvider()
-    {
-        return array_merge($this->notNullProvider(), [[null]]);
     }
 
     /**

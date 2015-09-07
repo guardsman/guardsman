@@ -6,20 +6,6 @@ trait EmptyPreconditions
     abstract public function getSubject();
 
     /**
-     * @throws \InvalidArgumentException if $subject is null.
-     *
-     * @return $this
-     */
-    public function isNotNull()
-    {
-        if ($this->getSubject() === null) {
-            throw new \InvalidArgumentException('Subject should not be null');
-        }
-
-        return $this;
-    }
-
-    /**
      * @throws \UnexpectedValueException if $subject is an empty string when trimmed.
      * @throws \UnexpectedValueException if $subject is empty.
      *
