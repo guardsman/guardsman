@@ -5,8 +5,6 @@ class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
     public function emptyProvider()
     {
         return [
-            [''],
-            [' '],
             ['0'],
             [0],
             [0.0],
@@ -21,6 +19,23 @@ class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider emptyProvider
      */
     public function testIsNotEmptyThrowsValueIsEmptyException($subject)
+    {
+        \Guardsman\check($subject)->isNotEmpty();
+    }
+
+    public function emptyStringProvider()
+    {
+        return [
+            [''],
+            [' '],
+        ];
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\StringIsEmpty
+     * @dataProvider emptyStringProvider
+     */
+    public function testIsNotEmptyThrowsStringIsEmptyException($subject)
     {
         \Guardsman\check($subject)->isNotEmpty();
     }
