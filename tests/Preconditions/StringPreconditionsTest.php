@@ -25,10 +25,10 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAString
+     * @expectedException \Guardsman\Exceptions\TypeNotString
      * @dataProvider invalidStringProvider
      */
-    public function testIsStringThrowsArgumentNotAString($subject)
+    public function testIsStringThrowsTypeNotString($subject)
     {
         \Guardsman\check($subject)->isString();
     }
@@ -42,7 +42,7 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAString
+     * @expectedException \Guardsman\Exceptions\TypeNotString
      * @dataProvider invalidStringProvider
      */
     public function testIsShorterThanGuardsAgainstNonStringSubjects($subject)
@@ -104,7 +104,7 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAString
+     * @expectedException \Guardsman\Exceptions\TypeNotString
      * @dataProvider invalidStringProvider
      */
     public function testIsShorterThanOrEqualToGuardsAgainstNonStringSubjects($subject)
@@ -138,7 +138,7 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAString
+     * @expectedException \Guardsman\Exceptions\TypeNotString
      * @dataProvider invalidStringProvider
      */
     public function testIsLongerThanGuardsAgainstNonStringSubjects($subject)
@@ -176,7 +176,7 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAString
+     * @expectedException \Guardsman\Exceptions\TypeNotString
      * @dataProvider invalidStringProvider
      */
     public function testIsLongerThanOrEqualToGuardsAgainstNonStringSubjects($subject)
