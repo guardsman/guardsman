@@ -1,8 +1,8 @@
 <?php namespace Guardsman\Preconditions;
 
-use Guardsman\Exceptions\ArgumentNotAString;
 use Guardsman\Exceptions\StringTooLong;
 use Guardsman\Exceptions\StringTooShort;
+use Guardsman\Exceptions\TypeNotString;
 
 trait StringPreconditions
 {
@@ -10,24 +10,24 @@ trait StringPreconditions
     abstract public function getSubject();
 
     /**
-     * @throws ArgumentNotAString if the subject is not a string.
+     * @throws TypeNotString if the subject is not a string.
      *
      * @return $this
      */
     public function isString()
     {
         if (!is_string($this->getSubject())) {
-            throw new ArgumentNotAString('Subject must be a string');
+            throw new TypeNotString('Subject must be a string');
         }
 
         return $this;
     }
 
     /**
-     * @throws ArgumentNotNumeric if the limit is not numeric.
-     * @throws ValueTooSmall      if the limit is less than or equal to zero.
-     * @throws ArgumentNotAString if the subject is not a string.
-     * @throws StringTooLong      if the subject is longer than or equal to $limit.
+     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws ValueTooSmall  if the limit is less than or equal to zero.
+     * @throws TypeNotString  if the subject is not a string.
+     * @throws StringTooLong  if the subject is longer than or equal to $limit.
      *
      * @return $this
      */
@@ -44,10 +44,10 @@ trait StringPreconditions
     }
 
     /**
-     * @throws ArgumentNotNumeric if the limit is not numeric.
-     * @throws ValueTooSmall      if the limit is less than or equal to zero.
-     * @throws ArgumentNotAString if the subject is not a string.
-     * @throws StringTooLong      if the subject is greater than $limit.
+     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws ValueTooSmall  if the limit is less than or equal to zero.
+     * @throws TypeNotString  if the subject is not a string.
+     * @throws StringTooLong  if the subject is greater than $limit.
      *
      * @return $this
      */
@@ -64,10 +64,10 @@ trait StringPreconditions
     }
 
     /**
-     * @throws ArgumentNotNumeric if the limit is not numeric.
-     * @throws ValueTooSmall      if the limit is less than or equal to zero.
-     * @throws ArgumentNotAString if the subject is not a string.
-     * @throws StringTooShort     if the subject is shorter or equal to $limit.
+     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws ValueTooSmall  if the limit is less than or equal to zero.
+     * @throws TypeNotString  if the subject is not a string.
+     * @throws StringTooShort if the subject is shorter or equal to $limit.
      *
      * @return $this
      */
@@ -84,10 +84,10 @@ trait StringPreconditions
     }
 
     /**
-     * @throws ArgumentNotNumeric if the limit is not numeric.
-     * @throws ValueTooSmall      if the limit is less than or equal to zero.
-     * @throws ArgumentNotAString if the subject is not a string.
-     * @throws StringTooShort     if the subject is shorter than $limit.
+     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws ValueTooSmall  if the limit is less than or equal to zero.
+     * @throws TypeNotString  if the subject is not a string.
+     * @throws StringTooShort if the subject is shorter than $limit.
      *
      * @return $this
      */

@@ -38,10 +38,10 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
-    public function testIsNumericThrowsArgumentNotNumeric($subject)
+    public function testIsNumericThrowsTypeNotNumeric($subject)
     {
         \Guardsman\check($subject)->isNumeric();
     }
@@ -60,10 +60,10 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAnInteger
+     * @expectedException \Guardsman\Exceptions\TypeNotInteger
      * @dataProvider nonIntegerProvider
      */
-    public function testIsIntegerThrowsArgumentNotAnInteger($subject)
+    public function testIsIntegerThrowsTypeNotInteger($subject)
     {
         \Guardsman\check($subject)->isInteger();
     }
@@ -82,10 +82,10 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAFloat
+     * @expectedException \Guardsman\Exceptions\TypeNotFloat
      * @dataProvider nonFloatProvider
      */
-    public function testIsFloatThrowsArgumentNotAFloat($subject)
+    public function testIsFloatThrowsTypeNotFloat($subject)
     {
         \Guardsman\check($subject)->isFloat();
     }
@@ -99,7 +99,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
     public function testIsGreaterThanGuardsAgainstNonNumericSubjects($subject)
@@ -108,7 +108,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
     public function testIsGreaterThanGuardsAgainstNonNumericLimits($limit)
@@ -153,7 +153,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
     public function testIsGreaterThanOrEqualToGuardsAgainstNonNumericSubjects($subject)
@@ -162,7 +162,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
     public function testIsGreaterThanOrEqualToGuardsAgainstNonNumericLimits($limit)
@@ -187,7 +187,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
     public function testIsLessThanGuardsAgainstNonNumericSubjects($subject)
@@ -196,7 +196,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
     public function testIsLessThanGuardsAgainstNonNumericLimits($limit)
@@ -225,7 +225,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
     public function testIsLessThanOrEqualToGuardsAgainstNonNumericSubjects($subject)
@@ -234,7 +234,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotNumeric
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
      * @dataProvider nonNumericProvider
      */
     public function testIsLessThanOrEqualToGuardsAgainstNonNumericLimits($limit)
