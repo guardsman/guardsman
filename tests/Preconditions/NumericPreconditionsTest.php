@@ -60,10 +60,10 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAnInteger
+     * @expectedException \Guardsman\Exceptions\TypeNotInteger
      * @dataProvider nonIntegerProvider
      */
-    public function testIsIntegerThrowsArgumentNotAnInteger($subject)
+    public function testIsIntegerThrowsTypeNotInteger($subject)
     {
         \Guardsman\check($subject)->isInteger();
     }

@@ -1,8 +1,8 @@
 <?php namespace Guardsman\Preconditions;
 
-use Guardsman\Exceptions\ArgumentNotAnInteger;
 use Guardsman\Exceptions\ArgumentNotNumeric;
 use Guardsman\Exceptions\TypeNotFloat;
+use Guardsman\Exceptions\TypeNotInteger;
 use Guardsman\Exceptions\ValueTooBig;
 use Guardsman\Exceptions\ValueTooSmall;
 
@@ -27,14 +27,14 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws ArgumentNotAnInteger if the subject is not an integer.
+     * @throws TypeNotInteger if the subject is not an integer.
      *
      * @return $this
      */
     public function isInteger()
     {
         if (!is_integer($this->getSubject())) {
-            throw new ArgumentNotAnInteger('Subject must be an integer');
+            throw new TypeNotInteger('Subject must be an integer');
         }
 
         return $this;
