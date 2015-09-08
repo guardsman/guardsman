@@ -1,8 +1,8 @@
 <?php namespace Guardsman\Preconditions;
 
-use Guardsman\Exceptions\ArgumentNotNumeric;
 use Guardsman\Exceptions\TypeNotFloat;
 use Guardsman\Exceptions\TypeNotInteger;
+use Guardsman\Exceptions\TypeNotNumeric;
 use Guardsman\Exceptions\ValueTooBig;
 use Guardsman\Exceptions\ValueTooSmall;
 
@@ -12,15 +12,15 @@ trait NumericPreconditions
     abstract public function getSubject();
 
     /**
-     * @throws ArgumentNotNumeric if the subject is not numeric.
-     * @throws ArgumentNotNumeric if the subject is a string.
+     * @throws TypeNotNumeric if the subject is not numeric.
+     * @throws TypeNotNumeric if the subject is a string.
      *
      * @return $this
      */
     public function isNumeric()
     {
         if (!is_numeric($this->getSubject()) || is_string($this->getSubject())) {
-            throw new ArgumentNotNumeric('Subject must be numeric');
+            throw new TypeNotNumeric('Subject must be numeric');
         }
 
         return $this;
@@ -55,9 +55,9 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws ArgumentNotNumeric if the limit is not numeric.
-     * @throws ArgumentNotNumeric if the subject is not numeric.
-     * @throws ValueTooSmall      if the subject is less than or equal to $limit.
+     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws TypeNotNumeric if the subject is not numeric.
+     * @throws ValueTooSmall  if the subject is less than or equal to $limit.
      *
      * @return $this
      */
@@ -74,9 +74,9 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws ArgumentNotNumeric if the limit is not numeric.
-     * @throws ArgumentNotNumeric if the subject is not numeric.
-     * @throws ValueTooSmall      if the subject is less than $limit.
+     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws TypeNotNumeric if the subject is not numeric.
+     * @throws ValueTooSmall  if the subject is less than $limit.
      *
      * @return $this
      */
@@ -93,9 +93,9 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws ArgumentNotNumeric if the limit is not numeric.
-     * @throws ArgumentNotNumeric if the subject is not numeric.
-     * @throws ValueTooBig        if the subject is greater than or equal to $limit.
+     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws TypeNotNumeric if the subject is not numeric.
+     * @throws ValueTooBig    if the subject is greater than or equal to $limit.
      *
      * @return $this
      */
@@ -112,9 +112,9 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws ArgumentNotNumeric if the limit is not numeric.
-     * @throws ArgumentNotNumeric if the subject is not numeric.
-     * @throws ValueTooBig        if the subject is greater than $limit.
+     * @throws TypeNotNumeric if the limit is not numeric.
+     * @throws TypeNotNumeric if the subject is not numeric.
+     * @throws ValueTooBig    if the subject is greater than $limit.
      *
      * @return $this
      */
