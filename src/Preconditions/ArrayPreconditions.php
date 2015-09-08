@@ -57,7 +57,7 @@ trait ArrayPreconditions
      *
      * @return $this
      */
-    public function isNotKey(array $array)
+    public function isNotKeyOf(array $array)
     {
         if (array_key_exists($this->getSubject(), $array)) {
             throw new KeyExists('Subject must not be a key of the given array.');
