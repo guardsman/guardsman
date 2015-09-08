@@ -2,7 +2,7 @@
 
 class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
 {
-    public function isValueProvider()
+    public function isValueOfProvider()
     {
         $array = [
             0,
@@ -26,17 +26,17 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider isValueProvider
+     * @dataProvider isValueOfProvider
      */
-    public function testIsValue($subject, array $array)
+    public function testisValueOf($subject, array $array)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check($subject)->isValue($array)
+            \Guardsman\check($subject)->isValueOf($array)
         );
     }
 
-    public function isNotValueProvider()
+    public function isNotValueOfProvider()
     {
         return [
             ['string', []],
@@ -52,34 +52,34 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Guardsman\Exceptions\ValueNotFound
-     * @dataProvider isNotValueProvider
+     * @dataProvider isNotValueOfProvider
      */
-    public function testIsValueThrowsValueNotFoundException($subject, array $array)
+    public function testisValueOfThrowsValueNotFound($subject, array $array)
     {
-        \Guardsman\check($subject)->isValue($array);
+        \Guardsman\check($subject)->isValueOf($array);
     }
 
     /**
-     * @dataProvider isNotValueProvider
+     * @dataProvider isNotValueOfProvider
      */
-    public function testIsNotValue($subject, array $array)
+    public function testisNotValueOf($subject, array $array)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check($subject)->isNotValue($array)
+            \Guardsman\check($subject)->isNotValueOf($array)
         );
     }
 
     /**
      * @expectedException \Guardsman\Exceptions\ValueExists
-     * @dataProvider isValueProvider
+     * @dataProvider isValueOfProvider
      */
-    public function testIsNotValueThrowsValueExistsException($subject, $array)
+    public function testisNotValueOfThrowsValueExists($subject, $array)
     {
-        \Guardsman\check($subject)->isNotValue($array);
+        \Guardsman\check($subject)->isNotValueOf($array);
     }
 
-    public function isKeyProvider()
+    public function isKeyOfProvider()
     {
         $array = [
             'string' => 1,
@@ -93,17 +93,17 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider isKeyProvider
+     * @dataProvider isKeyOfProvider
      */
-    public function testIsKey($subject, array $array)
+    public function testisKeyOf($subject, array $array)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check($subject)->isKey($array)
+            \Guardsman\check($subject)->isKeyOf($array)
         );
     }
 
-    public function isNotKeyProvider()
+    public function isNotKeyOfProvider()
     {
         return [
             ['string', ['String' => 1]],
@@ -114,30 +114,30 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Guardsman\Exceptions\KeyNotFound
-     * @dataProvider isNotKeyProvider
+     * @dataProvider isNotKeyOfProvider
      */
-    public function testIsKeyThrowsKeyNotFoundException($subject, array $array)
+    public function testisKeyOfThrowsKeyNotFound($subject, array $array)
     {
-        \Guardsman\check($subject)->isKey($array);
+        \Guardsman\check($subject)->isKeyOf($array);
     }
 
     /**
-     * @dataProvider isNotKeyProvider
+     * @dataProvider isNotKeyOfProvider
      */
-    public function testIsNotKey($subject, array $array)
+    public function testisNotKeyOf($subject, array $array)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check($subject)->isNotKey($array)
+            \Guardsman\check($subject)->isNotKeyOf($array)
         );
     }
 
     /**
      * @expectedException \Guardsman\Exceptions\KeyExists
-     * @dataProvider isKeyProvider
+     * @dataProvider isKeyOfProvider
      */
-    public function testIsNotKeyThrowsKeyExistsException($subject, $array)
+    public function testisNotKeyOfThrowsKeyExists($subject, $array)
     {
-        \Guardsman\check($subject)->isNotKey($array);
+        \Guardsman\check($subject)->isNotKeyOf($array);
     }
 }

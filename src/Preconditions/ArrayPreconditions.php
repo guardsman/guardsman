@@ -15,7 +15,7 @@ trait ArrayPreconditions
      *
      * @return $this
      */
-    public function isValue(array $array)
+    public function isValueOf(array $array)
     {
         if (!in_array($this->getSubject(), $array, true)) {
             throw new ValueNotFound('Subject must be a value within the given array');
@@ -29,7 +29,7 @@ trait ArrayPreconditions
      *
      * @return $this
      */
-    public function isNotValue(array $array)
+    public function isNotValueOf(array $array)
     {
         if (in_array($this->getSubject(), $array, true)) {
             throw new ValueExists('Subject must not be a value within the given array');
@@ -43,7 +43,7 @@ trait ArrayPreconditions
      *
      * @return $this
      */
-    public function isKey(array $array)
+    public function isKeyOf(array $array)
     {
         if (!array_key_exists($this->getSubject(), $array)) {
             throw new KeyNotFound('Subject must be a key of the given array.');
@@ -57,7 +57,7 @@ trait ArrayPreconditions
      *
      * @return $this
      */
-    public function isNotKey(array $array)
+    public function isNotKeyOf(array $array)
     {
         if (array_key_exists($this->getSubject(), $array)) {
             throw new KeyExists('Subject must not be a key of the given array.');
