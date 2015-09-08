@@ -1,7 +1,7 @@
 <?php namespace Guardsman\Preconditions;
 
+use Guardsman\Exceptions\EmptyValue;
 use Guardsman\Exceptions\StringIsEmpty;
-use Guardsman\Exceptions\ValueIsEmpty;
 
 trait EmptyPreconditions
 {
@@ -10,7 +10,7 @@ trait EmptyPreconditions
 
     /**
      * @throws StringIsEmpty if $subject is an empty string when trimmed.
-     * @throws ValueIsEmpty  if $subject is empty.
+     * @throws EmptyValue    if $subject is empty.
      *
      * @return $this
      */
@@ -21,7 +21,7 @@ trait EmptyPreconditions
         }
 
         if (empty($this->getSubject())) {
-            throw new ValueIsEmpty('Subject must not be empty');
+            throw new EmptyValue('Subject must not be empty');
         }
 
         return $this;
