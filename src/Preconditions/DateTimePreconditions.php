@@ -1,8 +1,8 @@
 <?php namespace Guardsman\Preconditions;
 
-use Guardsman\Exceptions\ArgumentNotADateTime;
 use Guardsman\Exceptions\DateTimeTooEarly;
 use Guardsman\Exceptions\DateTimeTooLate;
+use Guardsman\Exceptions\TypeNotDateTime;
 
 trait DateTimePreconditions
 {
@@ -10,18 +10,18 @@ trait DateTimePreconditions
     abstract public function getSubject();
 
     /**
-     * @throws ArgumentNotADateTime if $subject is not a DateTime.
+     * @throws TypeNotDateTime if $subject is not a DateTime.
      */
     private function isDateTime($subject)
     {
         if (!$subject instanceof \DateTimeInterface) {
-            throw new ArgumentNotADateTime('Subject must be a DateTime');
+            throw new TypeNotDateTime('Subject must be a DateTime');
         }
     }
 
     /**
-     * @throws ArgumentNotADateTime if the subject is not a DateTime.
-     * @throws DateTimeTooLate      if the subject is after or equal to the limit.
+     * @throws TypeNotDateTime if the subject is not a DateTime.
+     * @throws DateTimeTooLate if the subject is after or equal to the limit.
      *
      * @return $this
      */
@@ -37,8 +37,8 @@ trait DateTimePreconditions
     }
 
     /**
-     * @throws ArgumentNotADateTime if the subject is not a DateTime.
-     * @throws DateTimeTooLate      if the subject is after the limit.
+     * @throws TypeNotDateTime if the subject is not a DateTime.
+     * @throws DateTimeTooLate if the subject is after the limit.
      *
      * @return $this
      */
@@ -54,8 +54,8 @@ trait DateTimePreconditions
     }
 
     /**
-     * @throws ArgumentNotADateTime if the subject is not a DateTime.
-     * @throws DateTimeTooEarly     if the subject is before or equal to the limit.
+     * @throws TypeNotDateTime  if the subject is not a DateTime.
+     * @throws DateTimeTooEarly if the subject is before or equal to the limit.
      *
      * @return $this
      */
@@ -71,8 +71,8 @@ trait DateTimePreconditions
     }
 
     /**
-     * @throws ArgumentNotADateTime if the subject is not a DateTime.
-     * @throws DateTimeTooEarly     if the subject is before the limit.
+     * @throws TypeNotDateTime  if the subject is not a DateTime.
+     * @throws DateTimeTooEarly if the subject is before the limit.
      *
      * @return $this
      */

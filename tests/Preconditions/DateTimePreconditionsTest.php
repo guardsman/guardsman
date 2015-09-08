@@ -43,7 +43,7 @@ class DateTimePreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotADateTime
+     * @expectedException \Guardsman\Exceptions\TypeNotDateTime
      * @dataProvider nonDateTimeProvider
      */
     public function testIsBeforeGuardsAgainstNonDateTimeSubjects($subject)
@@ -80,7 +80,7 @@ class DateTimePreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotADateTime
+     * @expectedException \Guardsman\Exceptions\TypeNotDateTime
      * @dataProvider nonDateTimeProvider
      */
     public function testIsBeforeOrEqualToGuardsAgainstNonDateTimeSubjects($subject)
@@ -106,7 +106,7 @@ class DateTimePreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotADateTime
+     * @expectedException \Guardsman\Exceptions\TypeNotDateTime
      * @dataProvider nonDateTimeProvider
      */
     public function testIsAfterGuardsAgainstNonDateTimeSubjects($subject)
@@ -135,7 +135,7 @@ class DateTimePreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotADateTime
+     * @expectedException \Guardsman\Exceptions\TypeNotDateTime
      * @dataProvider nonDateTimeProvider
      */
     public function testIsAfterOrEqualToGuardsAgainstNonDateTimeSubjects($subject)
