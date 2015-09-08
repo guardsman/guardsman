@@ -2,7 +2,7 @@
 
 class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
 {
-    public function isValueProvider()
+    public function isValueOfProvider()
     {
         $array = [
             0,
@@ -26,13 +26,13 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider isValueProvider
+     * @dataProvider isValueOfProvider
      */
-    public function testIsValue($subject, array $array)
+    public function testisValueOf($subject, array $array)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check($subject)->isValue($array)
+            \Guardsman\check($subject)->isValueOf($array)
         );
     }
 
@@ -54,9 +54,9 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
      * @expectedException \Guardsman\Exceptions\ValueNotFound
      * @dataProvider isNotValueProvider
      */
-    public function testIsValueThrowsValueNotFoundException($subject, array $array)
+    public function testisValueOfThrowsValueNotFound($subject, array $array)
     {
-        \Guardsman\check($subject)->isValue($array);
+        \Guardsman\check($subject)->isValueOf($array);
     }
 
     /**
@@ -72,7 +72,7 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Guardsman\Exceptions\ValueExists
-     * @dataProvider isValueProvider
+     * @dataProvider isValueOfProvider
      */
     public function testIsNotValueThrowsValueExistsException($subject, $array)
     {

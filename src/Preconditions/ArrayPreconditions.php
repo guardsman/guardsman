@@ -15,7 +15,7 @@ trait ArrayPreconditions
      *
      * @return $this
      */
-    public function isValue(array $array)
+    public function isValueOf(array $array)
     {
         if (!in_array($this->getSubject(), $array, true)) {
             throw new ValueNotFound('Subject must be a value within the given array');
