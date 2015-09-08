@@ -82,10 +82,10 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Guardsman\Exceptions\ArgumentNotAFloat
+     * @expectedException \Guardsman\Exceptions\TypeNotFloat
      * @dataProvider nonFloatProvider
      */
-    public function testIsFloatThrowsArgumentNotAFloat($subject)
+    public function testIsFloatThrowsTypeNotFloat($subject)
     {
         \Guardsman\check($subject)->isFloat();
     }

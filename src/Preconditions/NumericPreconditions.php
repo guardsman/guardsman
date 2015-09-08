@@ -1,8 +1,8 @@
 <?php namespace Guardsman\Preconditions;
 
-use Guardsman\Exceptions\ArgumentNotAFloat;
 use Guardsman\Exceptions\ArgumentNotAnInteger;
 use Guardsman\Exceptions\ArgumentNotNumeric;
+use Guardsman\Exceptions\TypeNotFloat;
 use Guardsman\Exceptions\ValueTooBig;
 use Guardsman\Exceptions\ValueTooSmall;
 
@@ -41,14 +41,14 @@ trait NumericPreconditions
     }
 
     /**
-     * @throws ArgumentNotAFloat if the subject is not a float.
+     * @throws TypeNotFloat if the subject is not a float.
      *
      * @return $this
      */
     public function isFloat()
     {
         if (!is_float($this->getSubject())) {
-            throw new ArgumentNotAFloat('Subject must be a float');
+            throw new TypeNotFloat('Subject must be a float');
         }
 
         return $this;
