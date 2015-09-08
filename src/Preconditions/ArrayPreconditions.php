@@ -29,7 +29,7 @@ trait ArrayPreconditions
      *
      * @return $this
      */
-    public function isNotValue(array $array)
+    public function isNotValueOf(array $array)
     {
         if (in_array($this->getSubject(), $array, true)) {
             throw new ValueExists('Subject must not be a value within the given array');

@@ -36,7 +36,7 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function isNotValueProvider()
+    public function isNotValueOfProvider()
     {
         return [
             ['string', []],
@@ -52,7 +52,7 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Guardsman\Exceptions\ValueNotFound
-     * @dataProvider isNotValueProvider
+     * @dataProvider isNotValueOfProvider
      */
     public function testisValueOfThrowsValueNotFound($subject, array $array)
     {
@@ -60,13 +60,13 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider isNotValueProvider
+     * @dataProvider isNotValueOfProvider
      */
-    public function testIsNotValue($subject, array $array)
+    public function testisNotValueOf($subject, array $array)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check($subject)->isNotValue($array)
+            \Guardsman\check($subject)->isNotValueOf($array)
         );
     }
 
@@ -74,9 +74,9 @@ class ArrayPreconditionsTest extends \PHPUnit_Framework_TestCase
      * @expectedException \Guardsman\Exceptions\ValueExists
      * @dataProvider isValueOfProvider
      */
-    public function testIsNotValueThrowsValueExistsException($subject, $array)
+    public function testisNotValueOfThrowsValueExists($subject, $array)
     {
-        \Guardsman\check($subject)->isNotValue($array);
+        \Guardsman\check($subject)->isNotValueOf($array);
     }
 
     public function isKeyProvider()
