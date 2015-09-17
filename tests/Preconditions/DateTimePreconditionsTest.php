@@ -22,7 +22,7 @@ class DateTimePreconditionsTest extends \PHPUnit_Framework_TestCase
      * @expectedException \Guardsman\Exceptions\DateTimeTooLate
      * @dataProvider gteDateTimeProvider
      */
-    public function testIsBeforeThrowsDateTimeTooLateException(
+    public function testIsBeforeThrowsDateTimeTooLate(
         \DateTimeInterface $subject,
         \DateTimeInterface $limit
     ) {
@@ -73,7 +73,7 @@ class DateTimePreconditionsTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Guardsman\Exceptions\DateTimeTooLate
      */
-    public function testIsBeforeOrEqualToThrowsDateTimeTooLateException()
+    public function testIsBeforeOrEqualToThrowsDateTimeTooLate()
     {
         \Guardsman\check(new \DateTime('13th July 2014'))
             ->isBeforeOrEqualTo(new \DateTime('7th July 1984'));
