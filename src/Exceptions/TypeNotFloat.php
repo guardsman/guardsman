@@ -1,5 +1,5 @@
 <?php namespace Guardsman\Exceptions;
 
-class TypeNotFloat extends \InvalidArgumentException
+class TypeNotFloat extends \InvalidArgumentException implements Exception
 {
 }

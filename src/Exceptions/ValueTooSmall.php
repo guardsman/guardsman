@@ -1,5 +1,5 @@
 <?php namespace Guardsman\Exceptions;
 
-class ValueTooSmall extends \UnexpectedValueException
+class ValueTooSmall extends \UnexpectedValueException implements Exception
 {
 }

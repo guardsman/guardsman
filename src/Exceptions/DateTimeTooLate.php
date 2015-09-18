@@ -1,5 +1,5 @@
 <?php namespace Guardsman\Exceptions;
 
-class DateTimeTooLate extends \UnexpectedValueException
+class DateTimeTooLate extends \UnexpectedValueException implements Exception
 {
 }

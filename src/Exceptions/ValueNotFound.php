@@ -1,5 +1,5 @@
 <?php namespace Guardsman\Exceptions;
 
-class ValueNotFound extends \UnexpectedValueException
+class ValueNotFound extends \UnexpectedValueException implements Exception
 {
 }

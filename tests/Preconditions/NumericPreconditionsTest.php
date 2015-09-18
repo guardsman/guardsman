@@ -245,7 +245,7 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Guardsman\Exceptions\ValueTooBig
      */
-    public function testIsLessThanOrEqualToThrowsValueTooBigException()
+    public function testIsLessThanOrEqualToThrowsValueTooBig()
     {
         \Guardsman\check(7)->isLessThanOrEqualTo(1);
     }

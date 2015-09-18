@@ -1,5 +1,5 @@
 <?php namespace Guardsman\Exceptions;
 
-class StringTooLong extends \UnexpectedValueException
+class StringTooLong extends \UnexpectedValueException implements Exception
 {
 }
