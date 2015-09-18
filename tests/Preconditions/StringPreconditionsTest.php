@@ -2,11 +2,22 @@
 
 class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIsString()
+    public function isStringProvider()
+    {
+        return [
+            ['string'],
+            ['守衛'],
+        ];
+    }
+
+    /**
+     * @dataProvider isStringProvider
+     */
+    public function testIsString($subject)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check('string')->isString()
+            \Guardsman\check($subject)->isString()
         );
     }
 
@@ -33,11 +44,14 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
         \Guardsman\check($subject)->isString();
     }
 
-    public function testIsShorterThan()
+    /**
+     * @dataProvider isStringProvider
+     */
+    public function testIsShorterThan($subject)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check('string')->isShorterThan(7)
+            \Guardsman\check($subject)->isShorterThan(7)
         );
     }
 
@@ -72,6 +86,8 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
         return [
             ['string', 5],
             ['string', 6],
+            ['守衛', 1],
+            ['守衛', 2],
         ];
     }
 
@@ -89,6 +105,8 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
         return [
             ['string', 6],
             ['string', 7],
+            ['守衛', 2],
+            ['守衛', 3],
         ];
     }
 
@@ -123,17 +141,21 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Guardsman\Exceptions\StringTooLong
+     * @dataProvider isStringProvider
      */
-    public function testIsShorterThanOrEqualToThrowsStringTooLong()
+    public function testIsShorterThanOrEqualToThrowsStringTooLong($subject)
     {
-        \Guardsman\check('string')->isShorterThanOrEqualTo(5);
+        \Guardsman\check($subject)->isShorterThanOrEqualTo(1);
     }
 
-    public function testIsLongerThan()
+    /**
+     * @dataProvider isStringProvider
+     */
+    public function testIsLongerThan($subject)
     {
         $this->assertInstanceOf(
             \Guardsman\Guardsman::class,
-            \Guardsman\check('string')->isLongerThan(5)
+            \Guardsman\check($subject)->isLongerThan(1)
         );
     }
 
@@ -195,9 +217,10 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Guardsman\Exceptions\StringTooShort
+     * @dataProvider isStringProvider
      */
-    public function testIsLongerThanOrEqualToThrowsStringTooShort()
+    public function testIsLongerThanOrEqualToThrowsStringTooShort($subject)
     {
-        \Guardsman\check('string')->isLongerThanOrEqualTo(7);
+        \Guardsman\check($subject)->isLongerThanOrEqualTo(7);
     }
 }
