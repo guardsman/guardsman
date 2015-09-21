@@ -64,7 +64,7 @@ trait NumericPreconditions
     public function isGreaterThan($limit)
     {
         \Guardsman\check($limit)->isNumeric();
-        \Guardsman\check($this->getSubject())->isNumeric();
+        $this->isNumeric();
 
         if ($this->getSubject() <= $limit) {
             throw new ValueTooSmall('Subject must be greater than the limit');
@@ -83,7 +83,7 @@ trait NumericPreconditions
     public function isGreaterthanOrEqualTo($limit)
     {
         \Guardsman\check($limit)->isNumeric();
-        \Guardsman\check($this->getSubject())->isNumeric();
+        $this->isNumeric();
 
         if ($this->getSubject() < $limit) {
             throw new ValueTooSmall('Subject must be greater than or equal to the limit');
@@ -102,7 +102,7 @@ trait NumericPreconditions
     public function isLessThan($limit)
     {
         \Guardsman\check($limit)->isNumeric();
-        \Guardsman\check($this->getSubject())->isNumeric();
+        $this->isNumeric();
 
         if ($this->getSubject() >= $limit) {
             throw new ValueTooBig('Subject must be less than the limit');
@@ -121,7 +121,7 @@ trait NumericPreconditions
     public function isLessThanOrEqualTo($limit)
     {
         \Guardsman\check($limit)->isNumeric();
-        \Guardsman\check($this->getSubject())->isNumeric();
+        $this->isNumeric();
 
         if ($this->getSubject() > $limit) {
             throw new ValueTooBig('Subject must be less than or equal to the limit');
