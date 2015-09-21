@@ -149,3 +149,7 @@ public function changeStatus($status) {
 ```php
 \Guardsman\check($subject)->isLongerThanOrEqualTo($limit);
 ```
+
+### Show Thanks
+
+If you find this useful then please show your thanks with [a small donation](https://paypal.me/le6o/10).
