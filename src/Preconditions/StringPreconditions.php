@@ -24,8 +24,8 @@ trait StringPreconditions
     }
 
     /**
-     * @throws TypeNotNumeric if the limit is not numeric.
-     * @throws ValueTooSmall  if the limit is less than or equal to zero.
+     * @throws TypeNotNumeric if $limit is not numeric.
+     * @throws ValueTooSmall  if $limit is less than or equal to zero.
      * @throws TypeNotString  if the subject is not a string.
      * @throws StringTooLong  if the subject is longer than or equal to $limit.
      *
@@ -44,8 +44,8 @@ trait StringPreconditions
     }
 
     /**
-     * @throws TypeNotNumeric if the limit is not numeric.
-     * @throws ValueTooSmall  if the limit is less than or equal to zero.
+     * @throws TypeNotNumeric if $limit is not numeric.
+     * @throws ValueTooSmall  if $limit is less than or equal to zero.
      * @throws TypeNotString  if the subject is not a string.
      * @throws StringTooLong  if the subject is greater than $limit.
      *
@@ -64,8 +64,8 @@ trait StringPreconditions
     }
 
     /**
-     * @throws TypeNotNumeric if the limit is not numeric.
-     * @throws ValueTooSmall  if the limit is less than or equal to zero.
+     * @throws TypeNotNumeric if $limit is not numeric.
+     * @throws ValueTooSmall  if $limit is less than or equal to zero.
      * @throws TypeNotString  if the subject is not a string.
      * @throws StringTooShort if the subject is shorter or equal to $limit.
      *
@@ -84,8 +84,8 @@ trait StringPreconditions
     }
 
     /**
-     * @throws TypeNotNumeric if the limit is not numeric.
-     * @throws ValueTooSmall  if the limit is less than or equal to zero.
+     * @throws TypeNotNumeric if $limit is not numeric.
+     * @throws ValueTooSmall  if $limit is less than or equal to zero.
      * @throws TypeNotString  if the subject is not a string.
      * @throws StringTooShort if the subject is shorter than $limit.
      *
