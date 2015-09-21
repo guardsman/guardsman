@@ -34,7 +34,7 @@ trait StringPreconditions
     public function isShorterThan($limit)
     {
         \Guardsman\check($limit)->isGreaterThan(0);
-        \Guardsman\check($this->getSubject())->isString();
+        $this->isString();
 
         if (mb_strlen($this->getSubject()) >= $limit) {
             throw new StringTooLong('Subject must be shorter than the limit');
@@ -54,7 +54,7 @@ trait StringPreconditions
     public function isShorterThanOrEqualTo($limit)
     {
         \Guardsman\check($limit)->isGreaterThan(0);
-        \Guardsman\check($this->getSubject())->isString();
+        $this->isString();
 
         if (mb_strlen($this->getSubject()) > $limit) {
             throw new StringTooLong('Subject must be shorter than or equal to the limit');
@@ -74,7 +74,7 @@ trait StringPreconditions
     public function isLongerThan($limit)
     {
         \Guardsman\check($limit)->isGreaterThan(0);
-        \Guardsman\check($this->getSubject())->isString();
+        $this->isString();
 
         if (mb_strlen($this->getSubject()) <= $limit) {
             throw new StringTooShort('Subject must be longer than the limit');
@@ -94,7 +94,7 @@ trait StringPreconditions
     public function isLongerThanOrEqualTo($limit)
     {
         \Guardsman\check($limit)->isGreaterThan(0);
-        \Guardsman\check($this->getSubject())->isString();
+        $this->isString();
 
         if (mb_strlen($this->getSubject()) < $limit) {
             throw new StringTooShort('Subject must be longer than or equal to the limit');
