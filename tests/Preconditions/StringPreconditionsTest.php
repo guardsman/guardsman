@@ -2,6 +2,11 @@
 
 class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
 {
+    public function setUp()
+    {
+        mb_internal_encoding('UTF-8');
+    }
+
     public function isStringProvider()
     {
         return [
@@ -62,6 +67,15 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     public function testIsShorterThanGuardsAgainstNonStringSubjects($subject)
     {
         \Guardsman\check($subject)->isShorterThan(7);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\StringInvalid
+     */
+    public function testIsShorterThanGuardsAgainstIncorrectEncoding()
+    {
+        mb_internal_encoding('ASCII');
+        \Guardsman\check('守衛')->isShorterThan(7);
     }
 
     public function nonPositiveLimitProvider()
@@ -131,6 +145,15 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException \Guardsman\Exceptions\StringInvalid
+     */
+    public function testIsShorterThanOrEqualToGuardsAgainstIncorrectEncoding()
+    {
+        mb_internal_encoding('ASCII');
+        \Guardsman\check('守衛')->isShorterThan(7);
+    }
+
+    /**
      * @expectedException \Guardsman\Exceptions\ValueTooSmall
      * @dataProvider nonPositiveLimitProvider
      */
@@ -169,6 +192,15 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException \Guardsman\Exceptions\StringInvalid
+     */
+    public function testIsLongerThanGuardsAgainstIncorrectEncoding()
+    {
+        mb_internal_encoding('ASCII');
+        \Guardsman\check('守衛')->isShorterThan(7);
+    }
+
+    /**
      * @expectedException \Guardsman\Exceptions\ValueTooSmall
      * @dataProvider nonPositiveLimitProvider
      */
@@ -204,6 +236,15 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     public function testIsLongerThanOrEqualToGuardsAgainstNonStringSubjects($subject)
     {
         \Guardsman\check($subject)->isLongerThanOrEqualTo(7);
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\StringInvalid
+     */
+    public function testIsLongerThanOrEqualToGuardsAgainstIncorrectEncoding()
+    {
+        mb_internal_encoding('ASCII');
+        \Guardsman\check('守衛')->isShorterThan(7);
     }
 
     /**

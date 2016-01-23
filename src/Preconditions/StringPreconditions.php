@@ -1,5 +1,6 @@
 <?php namespace Guardsman\Preconditions;
 
+use Guardsman\Exceptions\StringInvalid;
 use Guardsman\Exceptions\StringTooLong;
 use Guardsman\Exceptions\StringTooShort;
 use Guardsman\Exceptions\TypeNotString;
@@ -8,6 +9,13 @@ trait StringPreconditions
 {
     /** @return mixed */
     abstract public function getSubject();
+
+    private function checkEncoding()
+    {
+        if (!mb_check_encoding($this->getSubject())) {
+            throw new StringInvalid('Subject must match mb_internal_encoding');
+        }
+    }
 
     /**
      * @throws TypeNotString if the subject is not a string.
@@ -34,7 +42,7 @@ trait StringPreconditions
     public function isShorterThan($limit)
     {
         \Guardsman\check($limit)->isGreaterThan(0);
-        $this->isString();
+        $this->isString()->checkEncoding();
 
         if (mb_strlen($this->getSubject()) >= $limit) {
             throw new StringTooLong('Subject must be shorter than the limit');
@@ -54,7 +62,7 @@ trait StringPreconditions
     public function isShorterThanOrEqualTo($limit)
     {
         \Guardsman\check($limit)->isGreaterThan(0);
-        $this->isString();
+        $this->isString()->checkEncoding();
 
         if (mb_strlen($this->getSubject()) > $limit) {
             throw new StringTooLong('Subject must be shorter than or equal to the limit');
@@ -74,7 +82,7 @@ trait StringPreconditions
     public function isLongerThan($limit)
     {
         \Guardsman\check($limit)->isGreaterThan(0);
-        $this->isString();
+        $this->isString()->checkEncoding();
 
         if (mb_strlen($this->getSubject()) <= $limit) {
             throw new StringTooShort('Subject must be longer than the limit');
@@ -94,7 +102,7 @@ trait StringPreconditions
     public function isLongerThanOrEqualTo($limit)
     {
         \Guardsman\check($limit)->isGreaterThan(0);
-        $this->isString();
+        $this->isString()->checkEncoding();
 
         if (mb_strlen($this->getSubject()) < $limit) {
             throw new StringTooShort('Subject must be longer than or equal to the limit');
