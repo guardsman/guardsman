@@ -129,7 +129,8 @@ public function changeStatus($status) {
 
 ### String
 
-*All limit based methods will first ensure the subject is a string and that the encoding matches mb_internal_encoding*
+*Methods that accept a limit will first check that the subject is a string and that the encoding matches mb_internal_encoding*
+*Limits will then be checked to ensure they are numeric and positive.*
 
 ```php
 \Guardsman\check($subject)->isString();
