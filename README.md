@@ -70,22 +70,22 @@ public function changeStatus($status) {
 
 ### DateTime
 
-*All methods will first ensure the subject is an instance of `\DateTimeInterface`*
+*Methods will first check that the subject is an instance of `\DateTimeInterface`*
 
 ```php
-\Guardsman\check($subject)->isBefore($limit);
+\Guardsman\check($subject)->isBefore(\DateTimeInterface $limit);
 ```
 
 ```php
-\Guardsman\check($subject)->isBeforeOrEqualTo($limit);
+\Guardsman\check($subject)->isBeforeOrEqualTo(\DateTimeInterface $limit);
 ```
 
 ```php
-\Guardsman\check($subject)->isAfter($limit);
+\Guardsman\check($subject)->isAfter(\DateTimeInterface $limit);
 ```
 
 ```php
-\Guardsman\check($subject)->isAfterOrEqualTo($limit);
+\Guardsman\check($subject)->isAfterOrEqualTo(\DateTimeInterface $limit);
 ```
 
 ### Empty
