@@ -96,7 +96,8 @@ public function changeStatus($status) {
 
 ### Number
 
-*All limit based methods will first ensure the subject is numeric*
+*Methods that accept a limit will first check that the subject is numeric.*
+*Limits will then be checked to ensure they are numeric and positive.*
 
 ```php
 \Guardsman\check($subject)->isNumeric();
