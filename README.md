@@ -54,17 +54,8 @@ public function changeStatus($status) {
 
 ```php
 \Guardsman\check($subject)->isValueOf($array);
-```
-
-```php
 \Guardsman\check($subject)->isNotValueOf($array);
-```
-
-```php
 \Guardsman\check($subject)->isKeyOf($array);
-```
-
-```php
 \Guardsman\check($subject)->isNotKeyOf($array);
 ```
 
@@ -74,17 +65,8 @@ public function changeStatus($status) {
 
 ```php
 \Guardsman\check($subject)->isBefore(\DateTimeInterface $limit);
-```
-
-```php
 \Guardsman\check($subject)->isBeforeOrEqualTo(\DateTimeInterface $limit);
-```
-
-```php
 \Guardsman\check($subject)->isAfter(\DateTimeInterface $limit);
-```
-
-```php
 \Guardsman\check($subject)->isAfterOrEqualTo(\DateTimeInterface $limit);
 ```
 
@@ -101,29 +83,11 @@ public function changeStatus($status) {
 
 ```php
 \Guardsman\check($subject)->isNumeric();
-```
-
-```php
 \Guardsman\check($subject)->isInteger();
-```
-
-```php
 \Guardsman\check($subject)->isFloat();
-```
-
-```php
 \Guardsman\check($subject)->isGreaterThan($limit);
-```
-
-```php
 \Guardsman\check($subject)->isGreaterthanOrEqualTo($limit);
-```
-
-```php
 \Guardsman\check($subject)->isLessThan($limit);
-```
-
-```php
 \Guardsman\check($subject)->isLessThanOrEqualTo($limit);
 ```
 
@@ -134,21 +98,9 @@ public function changeStatus($status) {
 
 ```php
 \Guardsman\check($subject)->isString();
-```
-
-```php
 \Guardsman\check($subject)->isShorterThan($limit);
-```
-
-```php
 \Guardsman\check($subject)->isShorterThanOrEqualTo($limit);
-```
-
-```php
 \Guardsman\check($subject)->isLongerThan($limit);
-```
-
-```php
 \Guardsman\check($subject)->isLongerThanOrEqualTo($limit);
 ```
 
