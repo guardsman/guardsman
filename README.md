@@ -53,10 +53,10 @@ public function changeStatus($status) {
 ### Array
 
 ```php
-\Guardsman\check($subject)->isValueOf($array);
-\Guardsman\check($subject)->isNotValueOf($array);
-\Guardsman\check($subject)->isKeyOf($array);
-\Guardsman\check($subject)->isNotKeyOf($array);
+\Guardsman\check($subject)->isValueOf(array $array);
+\Guardsman\check($subject)->isNotValueOf(array $array);
+\Guardsman\check($subject)->isKeyOf(array $array);
+\Guardsman\check($subject)->isNotKeyOf(array $array);
 ```
 
 ### DateTime
