@@ -53,39 +53,21 @@ public function changeStatus($status) {
 ### Array
 
 ```php
-\Guardsman\check($subject)->isValueOf($array);
-```
-
-```php
-\Guardsman\check($subject)->isNotValueOf($array);
-```
-
-```php
-\Guardsman\check($subject)->isKeyOf($array);
-```
-
-```php
-\Guardsman\check($subject)->isNotKeyOf($array);
+\Guardsman\check($subject)->isValueOf(array $array);
+\Guardsman\check($subject)->isNotValueOf(array $array);
+\Guardsman\check($subject)->isKeyOf(array $array);
+\Guardsman\check($subject)->isNotKeyOf(array $array);
 ```
 
 ### DateTime
 
-*All methods will first ensure the subject is an instance of `\DateTimeInterface`*
+*Methods will first check that the subject is an instance of `\DateTimeInterface`*
 
 ```php
-\Guardsman\check($subject)->isBefore($limit);
-```
-
-```php
-\Guardsman\check($subject)->isBeforeOrEqualTo($limit);
-```
-
-```php
-\Guardsman\check($subject)->isAfter($limit);
-```
-
-```php
-\Guardsman\check($subject)->isAfterOrEqualTo($limit);
+\Guardsman\check($subject)->isBefore(\DateTimeInterface $limit);
+\Guardsman\check($subject)->isBeforeOrEqualTo(\DateTimeInterface $limit);
+\Guardsman\check($subject)->isAfter(\DateTimeInterface $limit);
+\Guardsman\check($subject)->isAfterOrEqualTo(\DateTimeInterface $limit);
 ```
 
 ### Empty
@@ -96,58 +78,74 @@ public function changeStatus($status) {
 
 ### Number
 
-*All limit based methods will first ensure the subject is numeric*
+*Methods that accept a limit will first check that the subject is numeric.*
+*Limits will then be checked to ensure they are numeric and positive.*
 
 ```php
 \Guardsman\check($subject)->isNumeric();
-```
-
-```php
 \Guardsman\check($subject)->isInteger();
-```
-
-```php
 \Guardsman\check($subject)->isFloat();
-```
-
-```php
 \Guardsman\check($subject)->isGreaterThan($limit);
-```
-
-```php
 \Guardsman\check($subject)->isGreaterthanOrEqualTo($limit);
-```
-
-```php
 \Guardsman\check($subject)->isLessThan($limit);
-```
-
-```php
 \Guardsman\check($subject)->isLessThanOrEqualTo($limit);
 ```
 
 ### String
 
-*All limit based methods will first ensure the subject is a string*
+*Methods that accept a limit will first check that the subject is a string and that the encoding matches mb_internal_encoding*
+*Limits will then be checked to ensure they are numeric and positive.*
 
 ```php
 \Guardsman\check($subject)->isString();
-```
-
-```php
 \Guardsman\check($subject)->isShorterThan($limit);
-```
-
-```php
 \Guardsman\check($subject)->isShorterThanOrEqualTo($limit);
-```
-
-```php
 \Guardsman\check($subject)->isLongerThan($limit);
+\Guardsman\check($subject)->isLongerThanOrEqualTo($limit);
 ```
 
+## Extending Guardsman
+
+Simply extend the Guardsman class with your own methods and create a check function under your namespace.
+
+src\Your\Namespace\SuperGuard.php
+
 ```php
-\Guardsman\check($subject)->isLongerThanOrEqualTo($limit);
+namespace Your\Namespace;
+
+class SuperGuard extends \Guardsman\Guardsman
+{
+    public function isYourPreconditionMethod()
+    {
+        …
+    }
+}
+```
+
+src\Your\Namespace\check.php
+
+```php
+namespace Your\Namespace;
+
+function check($subject)
+{
+    return new SuperGuard($subject);
+}
+
+```
+
+composer.json
+
+```
+    "autoload": {
+        "files": ["src/Your/Namespace/check.php"]
+    }
+```
+
+Usage:
+
+```php
+\Your\Namespace\check($subject)->isYourPreconditionMethod();
 ```
 
 ### Show Thanks
