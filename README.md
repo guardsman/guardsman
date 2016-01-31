@@ -104,6 +104,50 @@ public function changeStatus($status) {
 \Guardsman\check($subject)->isLongerThanOrEqualTo($limit);
 ```
 
+## Extending Guardsman
+
+Simply extend the Guardsman class with your own methods and create a check function under your namespace.
+
+src\Your\Namespace\SuperGuard.php
+
+```php
+namespace Your\Namespace;
+
+class SuperGuard extends \Guardsman\Guardsman
+{
+    public function isYourPreconditionMethod()
+    {
+        …
+    }
+}
+```
+
+src\Your\Namespace\check.php
+
+```php
+namespace Your\Namespace;
+
+function check($subject)
+{
+    return new SuperGuard($subject);
+}
+
+```
+
+composer.json
+
+```
+    "autoload": {
+        "files": ["src/Your/Namespace/check.php"]
+    }
+```
+
+Usage:
+
+```php
+\Your\Namespace\check($subject)->isYourPreconditionMethod();
+```
+
 ### Show Thanks
 
 If you find this useful then please show your thanks with [a small donation](https://paypal.me/le6o/10).
