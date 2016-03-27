@@ -86,7 +86,7 @@ public function changeStatus($status) {
 \Guardsman\check($subject)->isInteger();
 \Guardsman\check($subject)->isFloat();
 \Guardsman\check($subject)->isGreaterThan($limit);
-\Guardsman\check($subject)->isGreaterthanOrEqualTo($limit);
+\Guardsman\check($subject)->isGreaterThanOrEqualTo($limit);
 \Guardsman\check($subject)->isLessThan($limit);
 \Guardsman\check($subject)->isLessThanOrEqualTo($limit);
 ```
