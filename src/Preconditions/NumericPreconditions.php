@@ -147,4 +147,18 @@ trait NumericPreconditions
 
         return $this;
     }
+
+    /**
+     * @throws ValueTooBig if the subject is greater than zero.
+     *
+     * @return $this
+     */
+    public function isNegative()
+    {
+        if ($this->getSubject() >= 0) {
+            throw new ValueTooBig('Subject must be less than zero');
+        }
+
+        return $this;
+    }
 }

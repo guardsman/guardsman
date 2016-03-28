@@ -274,4 +274,29 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check(7)->isLessThanOrEqualTo(1);
     }
+
+    public function testIsNegative()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check(-7)->isNegative()
+        );
+    }
+
+    public function nonNegativeProvider()
+    {
+        return [
+            [0],
+            [1],
+        ];
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ValueTooBig
+     * @dataProvider nonNegativeProvider
+     */
+    public function testIsNegativeThrowsValueTooBig($subject)
+    {
+        \Guardsman\check($subject)->isNegative();
+    }
 }
