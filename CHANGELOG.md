@@ -27,7 +27,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
  - `isInteger()`
  - `isFloat()`
  - `isGreaterThan($limit)`
- - `isGreaterthanOrEqualTo($limit)`
+ - `isGreaterThanOrEqualTo($limit)`
  - `isLessThan($limit)`
  - `isLessThanOrEqualTo($limit)`
 - String preconditions
