@@ -203,6 +203,15 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
         \Guardsman\check($subject)->isPositive();
     }
 
+    /**
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
+     * @dataProvider nonNumericProvider
+     */
+    public function testIsPositiveGuardsAgainstNonNumericSubjects($subject)
+    {
+        \Guardsman\check($subject)->isPositive();
+    }
+
     public function testIsLessThan()
     {
         $this->assertInstanceOf(
@@ -296,6 +305,15 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider nonNegativeProvider
      */
     public function testIsNegativeThrowsValueTooBig($subject)
+    {
+        \Guardsman\check($subject)->isNegative();
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
+     * @dataProvider nonNumericProvider
+     */
+    public function testIsNegativeGuardsAgainstNonNumericSubjects($subject)
     {
         \Guardsman\check($subject)->isNegative();
     }
