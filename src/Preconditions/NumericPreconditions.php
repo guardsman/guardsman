@@ -95,6 +95,23 @@ trait NumericPreconditions
     }
 
     /**
+     * @throws TypeNotNumeric if the subject is not numeric.
+     * @throws ValueTooSmall  if the subject is less than zero.
+     *
+     * @return $this
+     */
+    public function isPositive()
+    {
+        $this->isNumeric();
+
+        if ($this->getSubject() <= 0) {
+            throw new ValueTooSmall('Subject must be greater than zero');
+        }
+
+        return $this;
+    }
+
+    /**
      * @throws TypeNotNumeric if $limit is not numeric.
      * @throws TypeNotNumeric if the subject is not numeric.
      * @throws ValueTooBig    if the subject is greater than or equal to $limit.
@@ -129,6 +146,23 @@ trait NumericPreconditions
 
         if ($this->getSubject() > $limit) {
             throw new ValueTooBig('Subject must be less than or equal to the limit');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @throws TypeNotNumeric if the subject is not numeric.
+     * @throws ValueTooBig    if the subject is greater than zero.
+     *
+     * @return $this
+     */
+    public function isNegative()
+    {
+        $this->isNumeric();
+
+        if ($this->getSubject() >= 0) {
+            throw new ValueTooBig('Subject must be less than zero');
         }
 
         return $this;

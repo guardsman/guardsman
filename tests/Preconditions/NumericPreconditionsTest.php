@@ -178,6 +178,40 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
         \Guardsman\check(7)->isGreaterThanOrEqualTo(10);
     }
 
+    public function testIsPositive()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check(7)->isPositive()
+        );
+    }
+
+    public function nonPositiveProvider()
+    {
+        return [
+            [0],
+            [-1],
+        ];
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ValueTooSmall
+     * @dataProvider nonPositiveProvider
+     */
+    public function testIsPositiveThrowsValueTooSmall($subject)
+    {
+        \Guardsman\check($subject)->isPositive();
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
+     * @dataProvider nonNumericProvider
+     */
+    public function testIsPositiveGuardsAgainstNonNumericSubjects($subject)
+    {
+        \Guardsman\check($subject)->isPositive();
+    }
+
     public function testIsLessThan()
     {
         $this->assertInstanceOf(
@@ -248,5 +282,39 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
     public function testIsLessThanOrEqualToThrowsValueTooBig()
     {
         \Guardsman\check(7)->isLessThanOrEqualTo(1);
+    }
+
+    public function testIsNegative()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check(-7)->isNegative()
+        );
+    }
+
+    public function nonNegativeProvider()
+    {
+        return [
+            [0],
+            [1],
+        ];
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ValueTooBig
+     * @dataProvider nonNegativeProvider
+     */
+    public function testIsNegativeThrowsValueTooBig($subject)
+    {
+        \Guardsman\check($subject)->isNegative();
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\TypeNotNumeric
+     * @dataProvider nonNumericProvider
+     */
+    public function testIsNegativeGuardsAgainstNonNumericSubjects($subject)
+    {
+        \Guardsman\check($subject)->isNegative();
     }
 }
