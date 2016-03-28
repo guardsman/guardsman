@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.1.0] - 2016-03-28
 ### Added
 - Numeric preconditions
  - `isPositive()`
@@ -37,5 +37,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
  - `isLongerThan($limit)`
  - `isLongerThanOrEqualTo($limit)`
 
-[Unreleased]: https://github.com/guardsman/guardsman/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/guardsman/guardsman/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/guardsman/guardsman/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/guardsman/guardsman/compare/26b5a44...v1.0.0
