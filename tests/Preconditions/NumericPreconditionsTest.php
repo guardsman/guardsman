@@ -178,6 +178,31 @@ class NumericPreconditionsTest extends \PHPUnit_Framework_TestCase
         \Guardsman\check(7)->isGreaterThanOrEqualTo(10);
     }
 
+    public function testIsPositive()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check(7)->isPositive()
+        );
+    }
+
+    public function nonPositiveProvider()
+    {
+        return [
+            [0],
+            [-1],
+        ];
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\ValueTooSmall
+     * @dataProvider nonPositiveProvider
+     */
+    public function testIsPositiveThrowsValueTooSmall($subject)
+    {
+        \Guardsman\check($subject)->isPositive();
+    }
+
     public function testIsLessThan()
     {
         $this->assertInstanceOf(
