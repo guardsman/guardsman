@@ -27,6 +27,7 @@ class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
         return [
             [''],
             [' '],
+            ["\t\r\0\n"],
         ];
     }
 
