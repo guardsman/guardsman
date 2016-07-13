@@ -5,7 +5,6 @@ class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
     public function emptyProvider()
     {
         return [
-            ['0'],
             [0],
             [0.0],
             [false],
@@ -28,6 +27,7 @@ class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
         return [
             [''],
             [' '],
+            ["\t\r\0\n"],
         ];
     }
 
@@ -45,6 +45,7 @@ class EmptyPreconditionsTest extends \PHPUnit_Framework_TestCase
         return [
             ['string'],
             ['123'],
+            ['0'],
             [1],
             [1.2],
             [7E-10],

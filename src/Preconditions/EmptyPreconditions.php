@@ -16,11 +16,11 @@ trait EmptyPreconditions
      */
     public function isNotEmpty()
     {
-        if (is_string($this->getSubject()) && empty(trim($this->getSubject()))) {
+        if (is_string($this->getSubject()) && trim($this->getSubject()) === '') {
             throw new EmptyString('Subject must not be an empty string when trimmed');
         }
 
-        if (empty($this->getSubject())) {
+        if (!is_string($this->getSubject()) && empty($this->getSubject())) {
             throw new EmptyValue('Subject must not be empty');
         }
 

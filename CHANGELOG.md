@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Fixed
+- `isNotEmpty()` should not throw for '0' strings.
+
 ## [1.1.0] - 2016-03-28
 ### Added
 - Numeric preconditions
