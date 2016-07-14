@@ -104,6 +104,7 @@ public function changeStatus($status) {
 \Guardsman\check($subject)->isShorterThanOrEqualTo($limit);
 \Guardsman\check($subject)->isLongerThan($limit);
 \Guardsman\check($subject)->isLongerThanOrEqualTo($limit);
+\Guardsman\check($subject)->matchesRegex($pattern);
 ```
 
 ## Extending Guardsman
