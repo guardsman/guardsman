@@ -1,5 +1,6 @@
 <?php namespace Guardsman\Preconditions;
 
+use Guardsman\Exceptions\StringFailsRegex;
 use Guardsman\Exceptions\StringInvalid;
 use Guardsman\Exceptions\StringTooLong;
 use Guardsman\Exceptions\StringTooShort;
@@ -110,6 +111,25 @@ trait StringPreconditions
 
         if (mb_strlen($this->getSubject()) < $limit) {
             throw new StringTooShort('Subject must be longer than or equal to the limit');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @throws TypeNotString    if $pattern is not a string.
+     * @throws TypeNotString    if the subject is not a string.
+     * @throws StringFailsRegex if the subject is not matched by the given patterm.
+     *
+     * @return $this
+     */
+    public function matchesRegex($pattern)
+    {
+        \Guardsman\check($pattern)->isString();
+        $this->isString();
+
+        if (!preg_match($pattern, $this->getSubject())) {
+            throw new StringFailsRegex('Subject must be matched by the given pattern');
         }
 
         return $this;
