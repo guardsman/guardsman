@@ -264,4 +264,38 @@ class StringPreconditionsTest extends \PHPUnit_Framework_TestCase
     {
         \Guardsman\check($subject)->isLongerThanOrEqualTo(7);
     }
+
+    public function testMatchesRegex()
+    {
+        $this->assertInstanceOf(
+            \Guardsman\Guardsman::class,
+            \Guardsman\check('guardsman')->matchesRegex('/^Guard*/i')
+        );
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\StringFailsRegex
+     */
+    public function testMatchesRegexThrowsStringFailsRegex()
+    {
+        \Guardsman\check('guardsman')->matchesRegex('/le6o/');
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\TypeNotString
+     * @dataProvider invalidStringProvider
+     */
+    public function testMatchesRegexGuardsAgainstNonStringSubjects($subject)
+    {
+        \Guardsman\check($subject)->matchesRegex('/le6o/');
+    }
+
+    /**
+     * @expectedException \Guardsman\Exceptions\TypeNotString
+     * @dataProvider invalidStringProvider
+     */
+    public function testMatchesRegexGuardsAgainstNonStringPatterns($pattern)
+    {
+        \Guardsman\check('guardsman')->matchesRegex($pattern);
+    }
 }
